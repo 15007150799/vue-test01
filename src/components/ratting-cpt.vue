@@ -7,6 +7,7 @@
                      <div class="item-right"><span>{{item.fncJrnlId}}</span><span>{{item.ctrId}}</span></div>
                  </li>
              </div>
+             <div></div>
          </div>
     </div>
 </template>

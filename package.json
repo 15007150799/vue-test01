@@ -13,7 +13,9 @@
   },
   "dependencies": {
     "vue": "^2.5.2",
-    "vue-router": "^3.0.1"
+    "vue-router": "^3.0.1",
+    "vue-signature": "^2.4.3",
+    "vue-signature-pad": "^1.1.11"
   },
   "devDependencies": {
     "autoprefixer": "^7.1.2",

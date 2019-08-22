@@ -31,7 +31,7 @@
         </div>
     </div>
     <shopCar :selectFoods="selectFoods" :songPrice="songPrice" :minPrice="minPrice"></shopCar>
-    <food :setFood="setFood" ref="food"></food>
+    <food :setFood="setFood" :selectFoods="selectFoods"  @getSelectFoods="getFoods" ref="food"></food>
 </div>
 </template>
 <script>
@@ -94,9 +94,12 @@ export default ({
             this.foodscroll=new BScroll(this.$refs.foodWrap,{click:true})
         },
         selectFood(item,index){
-           this. setFood=item
+           this.setFood=item
            Vue.set(this.setFood,'imgSrc',this.classMap[index])
            this.$refs.food.show()
+        },
+        getFoods(items){
+           this.selectFoods=items
         }
     },
     computed:{
@@ -122,6 +125,7 @@ export default ({
  bottom 46px
  overflow hidden
  display flex
+//  flex-direction row
  .title-warp
   flex 0 0 80px
   width 80px
@@ -168,6 +172,10 @@ export default ({
     &:last-child
      border-bottom none
      margin-bottom 0px
+    // &:hover
+    //   background red
+    // &:active
+    //   background blue
     .food-img
      width 64px
     .content-name

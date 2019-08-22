@@ -10,7 +10,7 @@
               <p class="fncId">{{setFood.ctrId}}</p>
               <p class="money">￥28 <span class="money1">￥24</span></p>
           </div>
-          <span class="first-right">加入购物车</span>
+          <span class="first-right" @click.stop.prevent="increase(setFood)">加入购物车</span>
       </div>
       <div class="food-line"></div>
       <div class="good-introduct">
@@ -32,7 +32,7 @@
          <div class="ratting-icon">
              <span class="icon"></span><span>只看有内容的评价</span>
          </div>
-         <rattingCpt :selectFoods="selectFoods"></rattingCpt>
+         <rattingCpt :rattingFood="selectFoods"></rattingCpt>
       </div>
    </div>
  </div>
@@ -73,6 +73,22 @@ export default Vue.extend({
             if(!this.scrollfooddiv){
                 this.scrollfooddiv=new BScroll(this.$refs.food,{click:true})
             }
+        },
+        increase(item){
+            let cunFlag=true
+             this.selectFoods.forEach(element => {
+               if(element.fncJrnlId===item.fncJrnlId){
+                   element.count+=1
+                   cunFlag = false
+                   return
+               }
+             })
+            if(cunFlag){
+                Vue.set(item,'count',1)
+                this.selectFoods.push(item)
+            }
+            this.$emit('getSelectFoods',this.selectFoods);
+            alert("加入购物车成功！")
         }
     },
     computed:{
